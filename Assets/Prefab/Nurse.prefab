@@ -1047,6 +1047,7 @@ GameObject:
   - component: {fileID: 8339997163692313503}
   - component: {fileID: 4033156346024365379}
   - component: {fileID: 2251252478158587896}
+  - component: {fileID: 2044255587882491117}
   m_Layer: 0
   m_Name: Nurse
   m_TagString: Untagged
@@ -1125,12 +1126,12 @@ MonoBehaviour:
   duration: 0
   preConditions:
   - key: Waiting
-    value: 0
+    value: 1
   - key: FreeCubicle
-    value: 0
+    value: 1
   afterEffects:
   - key: patientPickedup
-    value: 0
+    value: 1
   agent: {fileID: 0}
   running: 0
 --- !u!114 &2251252478158587896
@@ -1145,16 +1146,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5678117bb7dbe4062818ddadf5581d6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actionName: Action
+  actionName: Go To Cubicle
   cost: 1
   target: {fileID: 0}
   targetTag: 
-  duration: 0
+  duration: 10
   preConditions:
   - key: patientPickedup
     value: 0
   afterEffects:
   - key: treatPatient
+    value: 0
+  agent: {fileID: 0}
+  running: 0
+--- !u!114 &2044255587882491117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2618188073631541129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b653ffdc99594469aee2c925de988b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionName: Rest
+  cost: 1
+  target: {fileID: 0}
+  targetTag: Lounge
+  duration: 5
+  preConditions:
+  - key: exhausted
+    value: 0
+  afterEffects:
+  - key: rested
     value: 0
   agent: {fileID: 0}
   running: 0
